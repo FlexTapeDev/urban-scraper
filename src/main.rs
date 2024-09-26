@@ -1,6 +1,7 @@
 use reqwest::blocking::get;
 use scraper::{Html, Selector};
 use std::error::Error;
+use std::io;
 
 fn main() -> Result<(), Box<dyn Error>> {
     let url = "https://example.com";
@@ -12,5 +13,8 @@ fn main() -> Result<(), Box<dyn Error>> {
         println!("Title: {}", title);
     }
 
+    println!("Press Enter to continue... ");
+    let mut input = String::new();
+    io::stdin().read_line(&mut input)?;
     Ok(())
 }
