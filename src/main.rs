@@ -1,4 +1,5 @@
 use reqwest::blocking::get;
+use reqwest::StatusCode;
 use scraper::{Html, Selector};
 use std::error::Error;
 use std::io::{self, Write};
@@ -20,7 +21,6 @@ fn main() -> Result<(), Box<dyn Error>> {
     let response = get(url)?.text()?; // get response from site that is being scraped
     let document = Html::parse_document(&response); // parse the data to be able to use it
     let selector = Selector::parse("h1, p").unwrap(); // which tags should be scraped
-    
     let mut results = Vec::new(); // initilizing a vector to put tag and text in
 
     for element in document.select(&selector) { // for loop searching for tags in the elements
