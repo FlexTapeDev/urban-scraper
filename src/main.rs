@@ -8,7 +8,7 @@ mod crates;
 
 fn main() -> Result<(), Box<dyn Error>> {
     println!("Link to scrape: ");
-    let mut url = String::new(); // currently static url will change later
+    let mut url = String::new(); 
     io::stdout().flush()?;
     io::stdin().read_line(&mut url)?;
     let mut url = url.trim().to_string();
